@@ -1,0 +1,43 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        MyBudget shows the user launchable apps so they can choose which ones to monitor.
+        This targeted query avoids the broad QUERY_ALL_PACKAGES permission.
+    -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+        <!-- Google Play services font provider used to download Inter for Compose. -->
+        <provider android:authorities="com.google.android.gms.fonts" />
+    </queries>
+
+    <application
+        android:name=".MyBudgetApplication"
+        android:allowBackup="true"
+        android:fullBackupContent="true"
+        android:label="MyBudget"
+        android:supportsRtl="true"
+        android:theme="@android:style/Theme.Material.Light.NoActionBar">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".platform.notification.BankNotificationListenerService"
+            android:label="MyBudget bank transaction tracking"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+    </application>
+</manifest>

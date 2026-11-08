@@ -1,0 +1,12 @@
+package com.mybudget.app.domain.usecase.transaction
+
+import com.mybudget.app.domain.model.Transaction
+import com.mybudget.app.domain.repository.TransactionRepository
+import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
+
+class GetTransactionsUseCase @Inject constructor(
+    private val repository: TransactionRepository
+) {
+    operator fun invoke(): Flow<List<Transaction>> = repository.observeTransactions()
+}
