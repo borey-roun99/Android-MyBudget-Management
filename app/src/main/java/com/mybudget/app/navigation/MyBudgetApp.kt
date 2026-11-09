@@ -135,8 +135,6 @@ fun MyBudgetApp() {
             }
         }
     ) { innerPadding ->
-//        val isBankAppSelection =
-//            currentDestination?.route == AppRoutes.BANK_APP_SELECTION
         NavHost(
             navController = navController,
             startDestination = AppRoutes.DASHBOARD,
